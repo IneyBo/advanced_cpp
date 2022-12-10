@@ -1,4 +1,4 @@
-#include <Windows.h>
+ï»¿#include <Windows.h>
 
 #include <iostream>
 #include <vector>
@@ -11,7 +11,7 @@ int main()
 
 	std::vector<int> arr1{ 4, 7, 9, 14, 12 };
 
-	std::cout << "Âõîäíûå äàííûå: ";
+	std::cout << "Ð’Ñ…Ð¾Ð´Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ: ";
 
 	std::for_each
 	(arr1.begin(), arr1.end(),
@@ -20,7 +20,7 @@ int main()
 			std::cout << n << " ";
 		});
 
-	std::cout << std::endl << "Âûõîäíûå äàííûå: ";
+	std::cout << std::endl << "Ð’Ñ‹Ñ…Ð¾Ð´Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ: ";
 
 	std::for_each
 	(arr1.begin(), arr1.end(),
