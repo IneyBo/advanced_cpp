@@ -1,0 +1,16 @@
+**/Material
+**/.vs
+**/*.vcxproj.filters
+**/*.vcxproj.user
+**/x64
+**/reserve
+**/out
+**/*.pdb
+**/*.idb
+**/*.exe
+**/*.obj
+**/*.recipe
+**/*.log
+**/*.tlog
+**/*.lastbuildstate
+**/*.ilk
