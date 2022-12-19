@@ -19,6 +19,10 @@ public:
     {
         delete[] arr;
     }
+
+    SmartArray(const SmartArray&) = delete; // Запрет конструктора копирования
+    SmartArray& operator=(const SmartArray&) = delete; // Запрет оператора присваивания
+
     void addElement(int element) // Добавление элемента
     {
         if (currentElement >= sizeArr) // Если количество элементов больше количества элементов, на которую выделена память

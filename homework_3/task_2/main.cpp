@@ -15,10 +15,21 @@ public:
         currentElement = 0;
         arr = new int[number]();
     }
+    SmartArray(const SmartArray& smartArr) // Конструктор копирования
+    {
+        sizeArr = smartArr.sizeArr;
+        currentElement = smartArr.currentElement;
+        arr = new int[smartArr.sizeArr]; // Создание нового массива
+        for (int i = 0; i < sizeArr; ++i) // Заполнение значениями
+        {
+            arr[i] = smartArr.arr[i];
+        }
+    }
     ~SmartArray() // Деструктор
     {
         delete[] arr;
     }
+
     void addElement(int element) // Добавление элемента
     {
         if (currentElement >= sizeArr) // Если количество элементов больше количества элементов, на которую выделена память
@@ -47,20 +58,23 @@ public:
     {
         return arr;
     }
-    int getSize() // Получение ращмера массива
+    int getSize() // Получение размера массива
     {
         return sizeArr;
     }
 
     SmartArray& operator= (const SmartArray& other) // Переопредление оператора присваивания
     {
-        delete[] arr; // Освобождение памяти под теекущий массив
-        sizeArr = other.sizeArr; // Присвоение размера из заданного
-        currentElement = other.currentElement; // Присвоение текущего элемента из заданного
-        arr = new int[sizeArr]; // Создание нового массива
-        for (int i = 0; i < sizeArr; ++i) // Заполнение значениями
+        if (&other != this)
         {
-            arr[i] = other.arr[i];
+            delete[] arr; // Освобождение памяти под теекущий массив
+            sizeArr = other.sizeArr; // Присвоение размера из заданного
+            currentElement = other.currentElement; // Присвоение текущего элемента из заданного
+            arr = new int[sizeArr]; // Создание нового массива
+            for (int i = 0; i < sizeArr; ++i) // Заполнение значениями
+            {
+                arr[i] = other.arr[i];
+            }
         }
         return *this; // Возвращение нового массива
     }
@@ -85,7 +99,10 @@ int main()
     arr.addElement(4);
     arr.addElement(155);
 
+    SmartArray arr2(arr);
+
     printArr(arr);
+    printArr(arr2);
 
     SmartArray new_array(2);
     new_array.addElement(44);
