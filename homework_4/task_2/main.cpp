@@ -80,6 +80,23 @@ public:
         }
     }
 
+    int GetValue(int node)
+    {
+        auto current = m_head;
+        if (node > 0)
+        {
+            for (int i = 0; i < node; ++i)
+            {
+                current = current->next;
+            }
+            return current->value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     void printList()
     {
         auto current = m_head;
@@ -109,29 +126,34 @@ private:
     unsigned long m_size;
 };
 
-TEST_CASE("test List", "[Empty]") // Тестирование функции Empty
+TEST_CASE("test List::PushBack", "[PushBack]") // Тестирование функции PushBack
 {
     List list1;
-    CHECK(list1.Empty() == true); // При создании экземпляра должна быть true
-    list1.PushFront(1);
-    CHECK(list1.Empty() == false); // После добавлении узлов должна быть false
+    list1.PushBack(5);
+    CHECK(list1.GetValue(1) == 5); // Первый узел должен содержать 5
+    list1.PushBack(10);
+    CHECK(list1.GetValue(2) == 10); // Второй узел должен содержать 10
+    CHECK(list1.GetValue(1) == 5);// Первый узел должен содержать 5
 }
 
-TEST_CASE("test List", "[Size]") // Тестирование функции Size
+TEST_CASE("test List::PushFront", "[PushFront]") // Тестирование функции PushFront
 {
     List list1;
-    CHECK(list1.Size() == 0); // При создании должно быть 0
-    list1.PushFront(1);
-    list1.PushBack(1);
-    CHECK(list1.Size() == 2); // После добавлении двух узлов должно быть 2
+    list1.PushFront(5);
+    CHECK(list1.GetValue(1) == 5); // Первый узел должен содержать 5
+    list1.PushFront(10);
+    CHECK(list1.GetValue(1) == 10); // Первый узел должен содержать 10
+    CHECK(list1.GetValue(2) == 5); // Второй узел должен содержать 5
 }
 
-TEST_CASE("test List", "[Clear]") // Тестирование функции Clear
+TEST_CASE("test List::PopBack", "[PopBack]") // Тестирование функции PopBack
 {
-    List list1;
-    list1.PushFront(1);
-    list1.Clear();
-    CHECK(list1.Size() == 0); // После применении функции Clear размер должен быть равен 0
+
+}
+
+TEST_CASE("test List::PopFront", "[PopBack]") // Тестирование функции PopFront
+{
+
 }
 
 int main()
